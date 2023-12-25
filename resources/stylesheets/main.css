@@ -1,4 +1,9 @@
 /* Styles */
+.banner {
+    border: #00bbff solid 10px;
+    margin: 24;
+}
+
 .header {
     height: 110px;
     background: #ffffff;

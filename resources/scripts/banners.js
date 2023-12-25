@@ -7,6 +7,8 @@ let curContent = null;
   
 while (i > Object.keys(json_parsed).length) {
     curContent = document.getElementById('container').innerHTML
-    document.getElementById('container').innerHTML = curContent+'<embed src="'+json_parsed[i].url+'" width="450" height="250" id="banner_'+json_parsed[i].name+'">'
+    document.getElementById('container').innerHTML = curContent+'<iframe src="'+json_parsed[i].url+'" width="450" height="250" id="banner_'+json_parsed[i].name+'"></iframe>'
 }
+
+delete json_parsed
 delete curContent

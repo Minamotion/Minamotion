@@ -1,0 +1,4 @@
+# Please don't make these files/folders editable by others
+/resources/data/banners.json
+*.gitignore
+/resources/fonts/

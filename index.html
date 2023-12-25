@@ -1,27 +1,19 @@
 <html>
   <head>
     <title>Minamotion</title>
-    <!-- TODO: Style this website -->
+    <link rel="stylesheet" href="/Minamotion/resources/stylesheets/main.css">
   </head>
   <body>
-    <div class="header">
-      <h1>(Temporarily unstyled) Minamotion's Page</h1>
-    </div>
-    <div id="container">
-      <script>
-        window.addEventListener('load', function(){
-          let json_parsed = []
-          fetch('/Minamotion/resources/data/banners.json')
-            .then(response => response.json())
-            .then(data => json_parsed = data)
-        
-          while (i > Object.keys(json_parsed).length) {
-            let curContent = document.getElementById('container').innerHTML
-            document.getElementById('container').innerHTML = curContent+'<embed src="'+json_parsed[i].url+'" width="450" height="250" id="banner_'+json_parsed[i].name+'">'
-            delete curContent
-          }
-        })
-      </script>
-    </div>
+    <page>
+      <div class="wrap header">
+        <h1>Minamotion's Website</h1>
+        <p><a href="https://www.youtube.com/@official_multilayer">YouTube</a> | <a href="https://scratch.mit.edu/users/MultiLayerScratch">Scratch</a> | <a href="https://github.com/Minamotion">Github</a></p>
+      </div>
+      <div id="container">
+        <script src="/Minamotion/resources/scripts/banners.js"></script>
+      </div>
+      <div class="wrap footer">
+      </div>
+    </page>
   </body>
 </html>

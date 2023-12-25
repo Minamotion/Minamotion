@@ -1,0 +1,130 @@
+/* Styles */
+.header {
+    height: 110px;
+    background: #ffffff;
+    color: #000000;
+    padding: 10px;
+    width: -webkit-fill-available;
+    overflow: auto;
+}
+
+iframe {
+    border: none;
+}
+
+#contents {
+    height: -webkit-fill-available;
+    overflow: auto;
+}
+
+page {
+    display: grid;
+    height: 100%;
+    width: 100%;
+    grid-template-rows:
+        130px /* Header */
+        auto  /* Contents */
+        130px /* Footer */;
+}
+
+.footer {
+    height: 110px;
+    background: #ffffff;
+    color: #000000;
+    padding: 10px;
+    width: -webkit-fill-available;
+    overflow: auto;
+}
+
+*:any-link {
+    color: darkblue;
+    text-decoration: none;
+    animation-name: hyperlinkNohover;
+    animation-duration: 0.5s;
+}
+
+*:any-link:hover {
+    color: blue;
+    text-decoration: none;
+    animation-name: hyperlinkHover;
+    animation-duration: 0.5s;
+}
+
+.hfButtons {
+    height: 100%;
+    width: 50%;
+    overflow: auto;
+    display: table-row-group;
+}
+
+.hfButtons>button {
+    margin: 24;
+}
+
+.userHeader {
+    margin: 30;
+    text-align: center;
+    background-color: #000000;
+    color: white;
+}
+
+#body {
+    font-family: "Bitcattoleman";
+    color: white;
+    background: #000000;
+    overflow: auto;
+    margin: 0;
+}
+
+img {
+    image-rendering: pixelated;
+}
+
+h1 {
+    font-family: "TPixel"
+}
+
+p {
+    font-family: "Kidraw"
+}
+
+.wrap {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.center-child {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+}
+
+
+/* Animations */
+@keyframes hyperlinkHover {
+    from {color: darkblue;}
+    to {color: blue;}
+}
+
+@keyframes hyperlinkNohover {
+    from {color: blue;}
+    to {color: darkblue;}
+}
+
+/* Fonts */
+@font-face {
+    src: url("/Minamotion/resources/fonts/font-bitcattoleman.ttf");
+    font-family: "Bitcattoleman"
+}
+
+@font-face {
+    src: url("/Minamotion/resources/fonts/font-kidraw.ttf");
+    font-family: "Kidraw"
+}
+
+@font-face {
+    src: url("/Minamotion/resources/fonts/font-tpixel.ttf");
+    font-family: "TPixel"
+}

@@ -1,18 +1,13 @@
-async function loadBanners() {
-    let i = 0;
-    let json = []
-    let curContent = "";
-    await fetch('/Minamotion/resources/data/banners.json').then(response => response.json()).then(data => json = data).catch(error => console.error('Error at "banners.json": Catched javascript error "'+error+'"'))
-  
-    while (i > Object.keys(json).length) {
-        curContent = document.getElementById('container').innerHTML
-        document.getElementById('container').innerHTML = curContent+'<iframe src="'+json[i]+'" width="450" height="250" class="banner"></iframe>'
-        i++
-    }
+let json = fetch('/Minamotion/resources/data/banners.json').then(response => response.json())
+let curContent = ''
+let i = 0
 
-    delete json
-    delete curContent
-    delete i
+while (i < Object.keys(json).length) {
+    curContent = document.getElementById('bannercontainer').innerHTML
+    document.getElementById('bannercontainer').innerHTML = '<iframe src="'+json[i]+'" width="450" height="250" class="banner"></iframe>'
+    i++
 }
 
-loadBanners()
+delete json
+delete curContent
+delete i

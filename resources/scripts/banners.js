@@ -1,13 +1,15 @@
-let json = fetch('/Minamotion/resources/data/banners.json').then(response => response.json())
-let curContent = ''
-let i = 0
+function loadBanners(data) {
+    let curContent = ''
+    let i = 0
 
-while (i < Object.keys(json).length) {
-    curContent = document.getElementById('bannercontainer').innerHTML
-    document.getElementById('bannercontainer').innerHTML = '<iframe src="'+json[i]+'" width="450" height="250" class="banner"></iframe>'
-    i++
+    while (i < Object.keys(data).length) {
+        curContent = document.getElementById('bannercontainer').innerHTML
+        document.getElementById('bannercontainer').innerHTML = curContent+'<iframe src="'+data[i]+'" width="450" height="250" class="banner"></iframe>'
+        i++
+    }
+
+    delete curContent
+    delete i
 }
 
-delete json
-delete curContent
-delete i
+fetch('/Minamotion/resources/data/banners.json').then(response => response.json()).then(data => loadBanners(data))

@@ -1,4 +1,4 @@
-# Please don't make these files/folders editable by others
+# Don't make these files be changed by others:
 /resources/data/banners.json
-*.gitignore
 /resources/fonts/
+*.gitignore

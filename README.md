@@ -1,1 +1,1 @@
-<img src="https://minamotion.github.io/Minamotion/resources/images/minamotion_fn.png">
+<img src="https://minamotion.github.io/Minamotion/resources/images/minamotion_fn.png" width="240" height="80">

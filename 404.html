@@ -1,0 +1,36 @@
+---
+permalink: /404.html
+---
+<html>
+	<head>
+		<title>Minamotion - Error</title>
+		<link rel="stylesheet" href="/Minamotion/resources/stylesheets/main.css">
+		<link rel="stylesheet" href="/Minamotion/resources/stylesheets/dialog.css">
+	</head>
+	<body id="body" onload="let iFrameDetection = (window.frames.length != parent.frames.length); if (iFrameDetection) { let contents = document.getElementById('contents').outerHTML; document.getElementById('body').innerHTML = contents; document.getElementById('contents').setAttribute('id',null)}">
+	<!-- Thanks "https://stackoverflow.com/questions/326069/how-to-identify-if-a-webpage-is-being-loaded-inside-an-iframe-or-directly-into-t" for providing an answer-->
+		<page id="main">
+			<div class="wrap header">
+				<img src="/Minamotion/resources/images/minamotion_logo.png" width="100" height="100">
+				<div class="center-child" style="width: 300px;">
+					<div class="wrap" style="justify-content: center; align-content: center;">
+						<img src="/Minamotion/resources/images/minamotion_fn.png" width="240" height="80">
+						<p style="margin: 0"><a href="https://www.youtube.com/@official_multilayer" title="The website I post videos on">YouTube</a> | <a href="https://scratch.mit.edu/users/MultiLayerScratch" title="The website I post most of my games on">Scratch</a> | <a href="https://github.com/Minamotion" title="The website I post websites on (Like this one!)">Github</a></p>
+					</div>
+				</div>
+			</div>
+			<div style="margin-top: 24; text-align: center; width: 100%;" id="contents">
+				<img type='image/png' src='/thegameplace/resources/images/errimg.png' width='150' height='150' style='margin: auto;'>
+				<h1 style="margin: 24;">ERROR</h1>
+				<p style="margin: 24;"><b>CANNOT FIND SPECIFIC:</b></p>
+				<p style="margin: 24;" id="url">ENABLE JAVASCRIPT IF YOU SEE THIS INSTEAD OF AN URL</p>
+				<script async>
+					document.getElementById('url').innerHTML = window.location.href
+				</script>
+			</div>
+			<div class="wrap footer">
+				<div class="hfButtons"></div>
+			</div>
+		</page>
+	</body>
+</html>

@@ -111,16 +111,16 @@ p {
 
 /* Fonts */
 @font-face {
-    src: url("/Minamotion/resources/fonts/font-bitcattoleman.ttf");
+    src: url("/resources/fonts/font-bitcattoleman.ttf");
     font-family: "Bitcattoleman"
 }
 
 @font-face {
-    src: url("/Minamotion/resources/fonts/font-kidraw.ttf");
+    src: url("/resources/fonts/font-kidraw.ttf");
     font-family: "Kidraw"
 }
 
 @font-face {
-    src: url("/Minamotion/resources/fonts/font-tpixel.ttf");
+    src: url("/resources/fonts/font-tpixel.ttf");
     font-family: "TPixel"
 }

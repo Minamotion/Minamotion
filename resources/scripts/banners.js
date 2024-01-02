@@ -12,4 +12,4 @@ function loadBanners(data) {
     delete i
 }
 
-fetch('/Minamotion/resources/data/banners.json').then(response => response.json()).then(data => loadBanners(data))
+fetch('/resources/data/banners.json').then(response => response.json()).then(data => loadBanners(data))

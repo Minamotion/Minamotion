@@ -1,4 +1,5 @@
 # Don't make these files be changed by others:
-/resources/data/banners.json
-/resources/fonts/
+assets/data/banners.json
+assets/data/fonts/
+newpage.html
 *.gitignore

@@ -12,4 +12,4 @@ function loadBanners(data) {
     delete i
 }
 
-fetch('/resources/data/banners.json').then(response => response.json()).then(data => loadBanners(data))
+fetch('/assets/data/banners.json').then(response => response.json()).then(data => loadBanners(data))

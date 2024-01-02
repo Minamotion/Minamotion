@@ -4,7 +4,7 @@ function loadBanners(data) {
 
     while (i < Object.keys(data).length) {
         curContent = document.getElementById('bannercontainer').innerHTML
-        document.getElementById('bannercontainer').innerHTML = curContent+'<iframe src="'+data[i]+'" width="450" height="250" class="banner"></iframe>'
+        document.getElementById('bannercontainer').innerHTML = curContent+'<iframe src="'+data[i]+'" width="600" height="400" class="banner"></iframe>'
         i++
     }
 

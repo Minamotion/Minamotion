@@ -4,14 +4,15 @@ permalink: /404.html
 <html>
 	<head>
 		<title>Minamotion - Error</title>
-		<link rel="stylesheet" href="/Minamotion/resources/stylesheets/main.css">
-		<link rel="stylesheet" href="/Minamotion/resources/stylesheets/dialog.css">
+		<link rel="stylesheet" href="/resources/stylesheets/main.css">
+		<link rel="stylesheet" href="/resources/stylesheets/dialog.css">
+		<link rel="icon" href="/resources/images/minamotion_logo.png">
 	</head>
 	<body id="body" onload="let iFrameDetection = (window.frames.length != parent.frames.length); if (iFrameDetection) { let contents = document.getElementById('contents').outerHTML; document.getElementById('body').innerHTML = contents; document.getElementById('contents').setAttribute('id',null)}">
 	<!-- Thanks "https://stackoverflow.com/questions/326069/how-to-identify-if-a-webpage-is-being-loaded-inside-an-iframe-or-directly-into-t" for providing an answer-->
 		<page id="main">
 			<div class="wrap header">
-				<img src="/Minamotion/resources/images/minamotion_logo.png" width="100" height="100">
+				<img src="/resources/images/minamotion_logo.png" width="100" height="100">
 				<div class="center-child" style="width: 300px;">
 					<div class="wrap" style="justify-content: center; align-content: center;">
 						<img src="/Minamotion/resources/images/minamotion_fn.png" width="240" height="80">
@@ -32,5 +33,6 @@ permalink: /404.html
 				<div class="hfButtons"></div>
 			</div>
 		</page>
+		<script src="/resources/scripts/mistaken.js" async></script>
 	</body>
 </html>

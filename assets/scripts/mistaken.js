@@ -1,9 +1,9 @@
-let repoArray = ["congratscard", "Minamotion", "thegameplace"]
+let repoArray = ["congratscard", "Minamotion", "thegameplace"] // Update when new repository is created
 let idx = 0
 
 while (idx < Object.keys(repoArray).length) {
     if("/"+repoArray[idx] === this.location.pathname){
-        this.location.assign("minamotion.github.io/"+repoArray[idx])
+        this.location.assign("https://minamotion.github.io/"+repoArray[idx]+"/index.html")
         break;
     }
     idx++

@@ -76,6 +76,7 @@ page {
 
 html {
     cursor: url('/assets/images/cursor/default.png'), default;
+    zoom: 75%
 }
 
 img {

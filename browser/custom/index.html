@@ -17,16 +17,12 @@
                 </div>
             </div>
             <div id="contents">
-                <script async>
-                    window.addEventListener('load',function(){document.getElementById('searchinput').removeAttribute('disabled')})
-                    document.getElementById('searchongooglebutton').addEventListener('click',function(){location.assign("https://google.com/search?q="+document.getElementById("searchinput").value)})
-                </script>
                 <div style="margin:24;" class="center-child">
                     <div>
                         <img src="/assets/images/minamotion_fn.png" width="240" height="80" style="margin:12">
                         <div class="wrap">
-                            <input type="search" id="searchinput">
-                            <button class="button" id="searchongooglebutton">Search in Google</button>
+                            <input type="search" id="searchinput" disabled>
+                            <button class="button" id="searchongooglebutton" style="width:200px;height:50px" onclick="location.assign('https:\/\/google.com/search?q='+document.getElementById('searchinput').value)">Search in Google</button>
                         </div>
                     </div>
                 </div>
@@ -35,5 +31,8 @@
                 <div class="hfButtons"></div>
             </div>
         </page>
+        <script async>
+            window.addEventListener('load',function(){document.getElementById('searchinput').removeAttribute('disabled')})
+        </script>
     </body>
 </html>

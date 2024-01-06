@@ -1,6 +1,7 @@
 # Don't make these files be changed by others:
 assets/data/banners.json
 assets/data/fonts/
+browser/
 newpage.html
 CNAME
 *.gitignore

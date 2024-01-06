@@ -1,23 +1,18 @@
 /* Styles */
-.banner {
-    border: #00bbff solid 10px;
-    margin: 24;
-}
-
-.header {
-    height: 110px;
-    background: #303030;
-    padding: 10px;
-    width: -webkit-fill-available;
-    overflow: auto;
-}
-
 iframe {
     border: none;
 }
 
 #contents {
     height: -webkit-fill-available;
+    overflow: auto;
+}
+
+.header {
+    height: 110px;
+    background: #585858;
+    padding: 10px;
+    width: -webkit-fill-available;
     overflow: auto;
 }
 
@@ -33,7 +28,7 @@ page {
 
 .footer {
     height: 110px;
-    background: #303030;
+    background: #585858;
     padding: 10px;
     width: -webkit-fill-available;
     overflow: auto;
@@ -51,6 +46,7 @@ page {
     text-decoration: none;
     animation-name: hyperlinkHover;
     animation-duration: 0.5s;
+    cursor: url('/assets/images/cursor/hand.png'), pointer;
 }
 
 .hfButtons {
@@ -67,9 +63,13 @@ page {
 #body {
     font-family: "Bitcattoleman";
     color: white;
-    background: #000000;
+    background: rgb(44, 44, 44);
     overflow: auto;
     margin: 0;
+}
+
+html {
+    cursor: url('/assets/images/cursor/default.png'), default;
 }
 
 img {
@@ -97,8 +97,21 @@ p {
     text-align: center;
 }
 
+*:disabled {
+    cursor: url('/assets/images/cursor/no.png'), not-allowed;
+}
 
 /* Animations */
+@keyframes userPfpHover {
+    from {border-color: black;}
+    to {border-color: blue;}
+}
+
+@keyframes userPfpNohover {
+    from {border-color: blue;}
+    to {border-color: black;}
+}
+
 @keyframes hyperlinkHover {
     from {color: darkblue;}
     to {color: blue;}
@@ -124,3 +137,4 @@ p {
     src: url("/assets/fonts/font-tpixel.ttf");
     font-family: "TPixel"
 }
+/* Cursors explained in "https://developer.mozilla.org/en-US/docs/Web/CSS/cursor" */

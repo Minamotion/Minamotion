@@ -38,8 +38,8 @@ input::placeholder {
     color: #0000004a
 }
 
-.button:enabled {
-    cursor: url('/assets/images/cursor/hand.png'), text;
+.button:enabled:hover {
+    cursor: url('/assets/images/cursor/hand.png'), pointer;
 }
 
 .button:hover {

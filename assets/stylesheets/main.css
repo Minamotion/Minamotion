@@ -108,16 +108,6 @@ p {
 }
 
 /* Animations */
-@keyframes userPfpHover {
-    from {border-color: black;}
-    to {border-color: blue;}
-}
-
-@keyframes userPfpNohover {
-    from {border-color: blue;}
-    to {border-color: black;}
-}
-
 @keyframes hyperlinkHover {
     from {color: darkblue;}
     to {color: blue;}

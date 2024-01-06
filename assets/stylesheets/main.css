@@ -68,6 +68,12 @@ page {
     margin: 0;
 }
 
+.banner {
+    border: #0000ff solid 10px;
+    border-radius: 5px;
+    background: black
+}
+
 html {
     cursor: url('/assets/images/cursor/default.png'), default;
 }

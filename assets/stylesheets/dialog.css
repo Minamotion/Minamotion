@@ -1,6 +1,6 @@
 /* Styles */
 dialog::backdrop {
-    background-color: #ffffff50;
+    backdrop-filter: blur(.1in);
 }
 
 dialog {

@@ -1,0 +1,47 @@
+<html>
+	<head>
+		<title>Minamotion - ...</title>
+        <link rel="stylesheet" href="./assets/stylesheets/main.css">
+        <link rel="stylesheet" href="./assets/stylesheets/dialog.css">
+		<link rel="icon" href="./assets/images/favicon.png">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.5, minimum-scale=0.5">
+        <meta charset="UTF-8">
+        <meta name="description" content="Welcome to my website where there are interesting yet somewhat simple things I make">
+        <meta name="keywords" content="Minamotion, MultiLayer, Cool, Websites">
+        <meta name="author" content="Minamotion">
+        <meta name="application-name" content="Minamotion's Website">
+	</head>
+	<body id="body">
+		<script src="./assets/scripts/safety.js" type="module"></script>
+		<script src="./assets/scripts/social-media.js" type="module"></script>
+		<page id="main">
+			<div class="wrap header">
+     			<img src="./assets/images/favicon.png" width="100" height="100">
+        		<div class="center-child" style="width: 300px;">
+          			<div class="wrap" style="justify-content: center; align-content: center;">
+            			<img src="./assets/images/minamotion.png" width="240" height="80">
+	            		<div id="socialmedia"></div>
+        			</div>
+				</div>
+				<div class="hfButtons"></div>
+      		</div>
+      		<div id="contents" class="center-child">
+                <img src="./assets/images/unknown.png" />
+                <h1>Oops! Error!</h1>
+                <script type="module">
+                    import { ez } from "./assets/scripts/ezget.js";
+                    const x = ez.element("errortxt")
+                    if (ez.mylink().includes("/404.html")) {
+                        x.innerText = "Wait... No error? That's weird..."
+                    } else {
+                        x.innerText = `Tried to access "${ez.mylink()}" but realized that page doesn't exist (404)`
+                    }
+                </script>
+                <p id="errortxt"></p>
+    		</div>
+      		<div class="wrap footer">
+				<div class="hfButtons"></div>
+  			</div>
+    	</page>
+  	</body>
+</html>

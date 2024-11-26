@@ -1,11 +1,11 @@
 /* Styles */
 :root {
-    --color-one: #2e2755;
+    --color-one: #3f48cc;
     --color-one-text: #ffffff;
-    --color-two: #1f1b39;
+    --color-two: #000000;
     --color-two-text: #ffffff;
-    --color-link: #2600ff;
-    --color-link-hover: #4322ff;
+    --color-link: #00a2e8;
+    --color-link-hover: #7092be;
 }
 
 iframe {
@@ -57,7 +57,7 @@ page {
     text-decoration: none;
     animation-name: hyperlinkHover;
     animation-duration: 0.5s;
-    cursor: url('/assets/images/cursor/hand.png'), pointer;
+    cursor: url('../images/cursor/hand.png'), pointer;
 }
 
 .hfButtons {
@@ -87,7 +87,7 @@ page {
 }
 
 html {
-    cursor: url('/assets/images/cursor/default.png'), default;
+    cursor: url('../images/cursor/default.png'), default;
     zoom: 80%;
 }
 
@@ -117,7 +117,7 @@ p {
 }
 
 *:disabled {
-    cursor: url('/assets/images/cursor/no.png'), not-allowed;
+    cursor: url('../images/cursor/no.png'), not-allowed;
 }
 
 /* Animations */
@@ -133,17 +133,17 @@ p {
 
 /* Fonts */
 @font-face {
-    src: url("/assets/fonts/font-bitcattoleman.ttf");
+    src: url("../fonts/font-bitcattoleman.ttf");
     font-family: "Bitcattoleman"
 }
 
 @font-face {
-    src: url("/assets/fonts/font-kidraw.ttf");
+    src: url("../fonts/font-kidraw.ttf");
     font-family: "Kidraw"
 }
 
 @font-face {
-    src: url("/assets/fonts/font-tpixel.ttf");
+    src: url("../fonts/font-tpixel.ttf");
     font-family: "TPixel"
 }
 /* Cursors explained in "https://developer.mozilla.org/en-US/docs/Web/CSS/cursor" */

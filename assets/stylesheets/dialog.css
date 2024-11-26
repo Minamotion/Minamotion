@@ -1,0 +1,81 @@
+/* Styles */
+dialog::backdrop {
+    backdrop-filter: blur(.1in);
+}
+
+dialog {
+    text-align: center;
+    color: #ffffff;
+    background-color: #000000;
+    border-style: solid;
+    border-color: #0000ff;
+    border-radius: 50px;
+    border-width: 10px;
+}
+
+.button {
+    font-family: "Bitcattoleman";
+    margin: 12;
+    width: 120;
+    height: 50;
+    color: white;
+    background: #aaaaaa;
+    border-style: none;
+}
+
+input[type=search], input[type=text], input[type=search], textarea, input[type=url] {
+    background: white;
+    border: none;
+    color: black;
+    font-family: "Bitcattoleman";
+}
+
+input[type=search]:hover, input[type=text]:hover, input[type=search]:hover, textarea:hover, input[type=url]:hover {
+    cursor: url('/assets/images/cursor/hand.png'), pointer;
+}
+
+input::placeholder {
+    color: #0000004a
+}
+
+.button:enabled:hover {
+    cursor: url('/assets/images/cursor/hand.png'), pointer;
+}
+
+.button:hover {
+    background: #6e6e6e;
+    cursor: url('/assets/images/cursor/hand.png'), pointer;
+}
+
+.button:disabled {
+    background: #eeeeee;
+    color: black;
+    animation-name: disable;
+    animation-duration: 2s;
+}
+
+.button:enabled:active {
+    background: #111111;
+    color: #666666;
+    cursor: url('/assets/images/cursor/hand.png'), pointer;
+}
+
+.dialogTitle {
+    width: 650;
+    height: 100;
+    text-align: center;
+    background-color: #ffffff;
+    color: #000000;
+    padding: 10px;
+    border-style: solid;
+    border-color: #0000ff;
+    border-radius: 20px;
+    border-width: 10px;
+}
+
+
+/* Animations */
+@keyframes disable {
+    from {background: #aaaaaa; color: white}
+    to {background: #eeeeee; color: black}
+}

@@ -1,0 +1,149 @@
+/* Styles */
+:root {
+    --color-one: #ffffff;
+    --color-one-text: #000000;
+    --color-two: #1f1b39;
+    --color-two-text: #ffffff;
+    --color-link: #2600ff;
+    --color-link-hover: #4322ff;
+}
+
+iframe {
+    border: none;
+}
+
+#contents {
+    height: -webkit-fill-available;
+    overflow: auto;
+}
+
+.header {
+    height: 110px;
+    background: var(--color-one);
+    color: var(--color-one-text);
+    padding: 10px;
+    width: -webkit-fill-available;
+    overflow: auto;
+}
+
+page {
+    display: grid;
+    height: 100%;
+    width: 100%;
+    grid-template-rows:
+        130px /* Header */
+        auto  /* Contents */
+        130px /* Footer */;
+}
+
+.footer {
+    height: 110px;
+    background: var(--color-one);
+    color: var(--color-one-text);
+    padding: 10px;
+    width: -webkit-fill-available;
+    overflow: auto;
+}
+
+*:any-link {
+    color: var(--color-link);
+    text-decoration: none;
+    animation-name: hyperlinkNohover;
+    animation-duration: 0.5s;
+}
+
+*:any-link:hover {
+    color: var(--color-link-hover);
+    text-decoration: none;
+    animation-name: hyperlinkHover;
+    animation-duration: 0.5s;
+    cursor: url('/assets/images/cursor/hand.png'), pointer;
+}
+
+.hfButtons {
+    height: 100%;
+    width: 50%;
+    overflow: auto;
+    display: table-row-group;
+}
+
+.hfButtons>button {
+    margin: 24;
+}
+
+#body {
+    font-family: "Bitcattoleman";
+    color: white;
+    background: var(--color-two);
+    color: var(--color-two-text);
+    overflow: auto;
+    margin: 0;
+}
+
+.banner {
+    border: var(--color-one) solid 10px;
+    border-radius: 5px;
+    background: black
+}
+
+html {
+    cursor: url('/assets/images/cursor/default.png'), default;
+    zoom: 80%;
+}
+
+img {
+    image-rendering: pixelated;
+}
+
+h1 {
+    font-family: "TPixel"
+}
+
+p {
+    font-family: "Kidraw"
+}
+
+.wrap {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.center-child {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+}
+
+*:disabled {
+    cursor: url('/assets/images/cursor/no.png'), not-allowed;
+}
+
+/* Animations */
+@keyframes hyperlinkHover {
+    from {color: var(--color-link);}
+    to {color: var(--color-link-hover);}
+}
+
+@keyframes hyperlinkNohover {
+    from {color: var(--color-link-hover);}
+    to {color: var(--color-link);}
+}
+
+/* Fonts */
+@font-face {
+    src: url("/assets/fonts/font-bitcattoleman.ttf");
+    font-family: "Bitcattoleman"
+}
+
+@font-face {
+    src: url("/assets/fonts/font-kidraw.ttf");
+    font-family: "Kidraw"
+}
+
+@font-face {
+    src: url("/assets/fonts/font-tpixel.ttf");
+    font-family: "TPixel"
+}
+/* Cursors explained in "https://developer.mozilla.org/en-US/docs/Web/CSS/cursor" */

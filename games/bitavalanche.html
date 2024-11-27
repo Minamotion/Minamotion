@@ -12,7 +12,239 @@
         <meta name="application-name" content="Minamotion's Website">
     </head>
     <body>
-        <script src="assets/scripts/games/bitavalanche.js" async></script>
+        <script async>
+            import kaboom from "https://unpkg.com/kaboom/dist/kaboom.mjs"
+            const DEBUG = false
+            document.addEventListener("DOMContentLoaded", () => {
+                const k = kaboom({ background: [255, 255, 255], global: false, crisp: true })
+                const playerspeed = 250
+                const minSize = 110
+                const maxSize = 250
+                const minSpawnTime = 0.2
+                const maxSpawnTime = 1
+                const killSize = 15
+                const dangerSpeedFormula = (size) => { return ((maxSize * 2.2) + 20) - (size * 2.2) }
+                if (DEBUG) { k.debug.log("Welcome developer! Debug mode is true! Press CTRL to see debug info!") }
+                k.add([k.stay()]).onUpdate(() => {
+                    if (k.isKeyPressed("control") && DEBUG) {
+                        k.debug.inspect = !k.debug.inspect
+                    }
+                })
+                const funstuff = k.add([k.pos(), k.text(""), k.anchor("topleft"), k.color([0, 0, 0]), k.opacity(.5), k.stay()])
+                function addEffect(tag, object, time = 3) {
+                    if (object.effects != null) {
+                        let severity = 1
+                        object.effects.forEach((item) => {
+                            if (item.tag === tag) {
+                                item.time = -9999
+                                if (item.severity > severity) {
+                                    severity = item.severity
+                                }
+                            }
+                        })
+                        object.effects = object.effects.concat([{ tag: tag, time: time, severity: severity }])
+                        return true
+                    } else {
+                        return false
+                    }
+                }
+                function createObstacle() {
+                    let ylevel = k.randi(0, k.height())
+                    let size = k.randi(minSize, maxSize)
+                    let speed = dangerSpeedFormula(size)
+                    const danger = k.add(["danger", k.pos(k.width() + size, ylevel), k.color([0, 0, 0]), k.rect(size, size), k.anchor("center"), k.area(), { speed: speed, size: size, effects: [], funnyname: createFunnyName() }])
+                    danger.add([k.text(danger.funnyname, { align: "center", size: 20 }), k.color([255, 0, 0]), k.anchor("center")])
+                    return danger
+                }
+                function createFunnyName() {
+                    const prefix = ["Silly", "Funny", "Incredible", "Serious", "King", "Queen", "Pretty", "Tiny", "Gigantic", "Tasty", "Edible", "Majestic", "Hilarious"]
+                    const suffix = ["Paw", "Syrup", "Toy", "Duck", "Computer", "Dino", "Cat", "Mouse", "Dog", "Corn", "Bird", "Box", "Billy"]
+                    return `${prefix[k.randi(0, prefix.length - 1)]} ${suffix[k.randi(0, suffix.length - 1)]}`
+                }
+                function createBullet(position) {
+                    const luckynumber = k.randi(0, 150)
+                    const isPoison = (luckynumber <= 20)
+                    const isFreeze = (luckynumber > 15) && (luckynumber <= 30)
+                    const isCritical = (k.randi(0, 200) <= 10)
+                    let onHitBehaviors = ["destroyBullet", (isPoison) ? "poisonDanger" : "damageDanger"]
+                    if (isFreeze) { onHitBehaviors = onHitBehaviors.concat(["freezeDanger"]) }
+                    if (isCritical) { onHitBehaviors = onHitBehaviors.concat(["worsenEffects"]) }
+                    const bullet = k.add(["bullet", k.pos(position), k.color([(isCritical) ? 127 : 0, (isPoison) ? 127 : 0, (isFreeze) ? 127 : 0]), k.rect(20, 20), k.anchor("center"), k.area(), { speed: 500, onHit: onHitBehaviors, damage: (isCritical) ? 100 : 50, size: 20 }])
+                    return bullet
+                }
+                function createParticle(position, colorArray = [0, 0, 0]) {
+                    let mx = 0
+                    while (mx == 0) {
+                        mx = k.randi(-500, 500)
+                    }
+                    let my = 0
+                    while (my == 0) {
+                        my = k.randi(-500, 500)
+                    }
+                    let size = k.randi(5, 25)
+                    const particle = k.add(["particle", k.pos(position.x + k.randi(-10, 10), position.y + k.randi(-10, 10)), k.color(colorArray), k.rect(size, size), k.anchor("center"), { mx: mx, my: my, size: size }])
+                    return particle
+                }
+                function splash(position, amount = 5, colorArray = [0, 0, 0]) {
+                    let index = 0
+                    while (index < amount) {
+                        createParticle(position, colorArray)
+                        index += 1
+                    }
+                }
+                k.scene("game", () => {
+                    let score = 0
+                    let time = 0
+                    let lasttime = 0
+                    let waittime = 0
+                    k.onUpdate(() => {
+                        time += k.dt()
+                        if (lasttime + waittime <= time) {
+                            createObstacle()
+                            lasttime = time
+                            waittime = k.randi(minSpawnTime * 1000, maxSpawnTime * 1000) / 1000
+                            score += k.randi(5, 10)
+                        }
+                    })
+                    k.add(["scorecounter", k.pos(k.center()), k.text("0"), k.anchor("center"), k.color([0, 0, 0]), k.opacity(.5)])
+                    k.onUpdate("scorecounter", (scorecounter) => {
+                        scorecounter.text = `${Math.floor(time)}\n${score}`
+                    })
+                    k.add(["player", k.pos(k.center().x / 2, k.center().y), k.color([0, 0, 0]), k.rect(50, 50), k.anchor("center"), k.body(), k.area()])
+                    k.onUpdate("particle", (particle) => {
+                        particle.size -= 0.2
+                        particle.use(k.rect(Math.abs(particle.size), Math.abs(particle.size)))
+                        if (particle.size <= 0) {
+                            particle.destroy()
+                        }
+                        particle.move(particle.mx, particle.my)
+                    })
+                    k.onUpdate("player", (player) => {
+                        let speedx = 0
+                        if (!(k.isKeyDown("left") && k.isKeyDown("right"))) {
+                            if (k.isKeyDown("left")) { speedx = -playerspeed }
+                            if (k.isKeyDown("right")) { speedx = playerspeed }
+                        }
+                        if (Math.abs(speedx) > 0) {
+                            if (player.pos.x < 25 && Math.sign(speedx) == -1) { speedx = 0 }
+                            if (player.pos.x > (k.width() - 25) && Math.sign(speedx) == 1) { speedx = 0 }
+                        }
+                        let speedy = 0
+                        if (!(k.isKeyDown("up") && k.isKeyDown("down"))) {
+                            if (k.isKeyDown("up")) { speedy = -playerspeed }
+                            if (k.isKeyDown("down")) { speedy = playerspeed }
+                        }
+                        if (Math.abs(speedy) > 0) {
+                            if (player.pos.y < 25 && Math.sign(speedy) == -1) { speedy = 0 }
+                            if (player.pos.y > (k.height() - 25) && Math.sign(speedy) == 1) { speedy = 0 }
+                        }
+                        if (k.isKeyDown("z")) { speedx *= 2; speedy *= 2 }
+                        if (k.isKeyPressed("x")) { createBullet(player.pos) }
+                        player.move(speedx, speedy)
+                    })
+                    k.onUpdate("danger", (danger) => {
+                        let color = [0, 0, 0]
+                        if (danger.effects.length > 0) {
+                            danger.effects.forEach((effect) => {
+                                switch (effect.tag) {
+                                    case "frozen":
+                                        color[2] = 127
+                                        danger.speed = 0
+                                        break;
+                                    case "poison":
+                                        color[1] = 127
+                                        danger.size -= 0.5 * effect.severity
+                                        score += 1
+                                        break;
+                                    default:
+                                        throw new TypeError(`Invalid effect "${effect.tag}" (supposed to last ${effect.time} seconds) found in dangerous object.`)
+                                }
+                                effect.time -= k.dt()
+                            })
+                            danger.effects = danger.effects.filter((item) => { if (item != null) { return !(item.time <= 0) } else { return false } })
+                        }
+                        danger.use(k.color(color))
+                        danger.move(-danger.speed, 0)
+                        if (danger.pos.x < -danger.size) {
+                            danger.destroy()
+                            funstuff.text = `${danger.funnyname} escaped`
+                        }
+                        if (danger.size >= killSize) {
+                            danger.speed = dangerSpeedFormula(danger.size)
+                            danger.use(k.rect(danger.size, danger.size))
+                        } else {
+                            score += k.randi(90, 110)
+                            splash(danger.pos, 10, danger.color)
+                            funstuff.text = `Player ${deathMessage()} ${danger.funnyname}`
+                            danger.destroy()
+                        }
+                    })
+                    k.onUpdate("bullet", (bullet) => {
+                        bullet.move(bullet.speed, 0)
+                        if (bullet.pos.x > k.width() + bullet.size) {
+                            bullet.destroy()
+                        }
+                    })
+                    k.onCollide("bullet", "danger", (bullet, danger) => {
+                        bullet.onHit.forEach(behavior => {
+                            switch (behavior) {
+                                case "destroyBullet":
+                                    bullet.destroy()
+                                    break;
+                                case "damageDanger":
+                                    danger.size -= bullet.damage
+                                    if (danger.size >= killSize) {
+                                        score += k.randi(40, 60)
+                                        splash(danger.pos, 2, danger.color)
+                                    }
+                                    break;
+                                case "freezeDanger":
+                                    addEffect("frozen", danger, 4)
+                                    break;
+                                case "poisonDanger":
+                                    addEffect("poison", danger, 2)
+                                    break;
+                                case "worsenEffects":
+                                    if (danger.effects.length > 0) {
+                                        for (const index in danger.effects) {
+                                            const item = danger.effects[index]
+                                            item.time = 5
+                                            item.severity += 1
+                                        }
+                                    }
+                                    break;
+                                default:
+                                    throw new TypeError(`Invalid behavior "${behavior}" found in bullet.`)
+                            }
+                        })
+                    })
+                    k.onCollide("player", "danger", (player, danger) => {
+                        funstuff.text = `${danger.funnyname} ${deathMessage()} Player`
+                        player.destroy()
+                    })
+                    k.onDestroy("player", (player) => {
+                        k.go("ulost", Math.floor(time), score)
+                    })
+                })
+                k.scene("ulost", (time = 0, score = 0) => {
+                    k.add([k.pos(k.center().x, k.height() / 4), k.text("You lost!", { align: "center", size: 80 }), k.anchor("center"), k.color([255, 0, 0])])
+                    k.add([k.pos(k.center()), k.text(`You survived for ${time} seconds and scored ${score} points\nYou averaged almost ${Math.floor(score / time)} points per second\nPress anything to play`, { align: "center", width: k.width() }), k.anchor("top"), k.color([0, 0, 0])])
+
+                    // Restart the game
+                    k.onUpdate(() => { if (k.isKeyPressed()) { k.go("game") } })
+                    k.onMousePress(() => { k.go("game") })
+                })
+                k.scene("main", () => {
+                    k.add([k.pos(k.center().x, k.height() / 4), k.text("Bit Avalanche", { align: "center", size: 80 }), k.anchor("center"), k.color([0, 0, 0])])
+                    k.add([k.pos(k.center()), k.text("[Arrows] to move\n[X] to shoot obstacles\n[Z] to speed up\nAvoid the obstacles\nPress anything to play", { align: "center", width: k.width() }), k.anchor("top"), k.color([0, 0, 0])])
+
+                    // Start the game
+                    k.onUpdate(() => { if (k.isKeyPressed()) { k.go("game") } })
+                    k.onMousePress(() => { k.go("game") })
+                })
+                k.go("main")
+            })
+        </script>
         <noscript>You need Javascript enabled to play this game, buddy!</noscript>
     </body>
 </html>

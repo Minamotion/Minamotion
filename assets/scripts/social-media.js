@@ -1,4 +1,3 @@
-import ez from "https://minamotion.github.io/Minamotion/assets/scripts/ezget.js"
 document.addEventListener("DOMContentLoaded",async ()=>{
     let socialMediaLinks = []
     await fetch("assets/data/social-media-links.json").then((response)=>{
@@ -8,6 +7,6 @@ document.addEventListener("DOMContentLoaded",async ()=>{
     })
     socialMediaLinks.forEach((data)=>{
         const element = `<a href="${data.link}" title="${data.title}"><img src="assets/images/link-icons/${data.icon}.png" /></a>`
-        ez.element("socialmedia").innerHTML += element
+        document.getElementById("socialmedia").innerHTML += element
     })
 })

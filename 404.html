@@ -31,10 +31,10 @@
                 <script type="module">
                     import { ez } from "assets/scripts/ezget.js";
                     const x = ez.element("errortxt")
-                    if (ez.mylink().includes("/404.html")) {
-                        x.innerText = "Wait... No error? That's weird..."
+                    if (window.location.pathname.split("/")[0].includes("404")) {
+                        x.innerText = 'Requested (404PAGE), is this what you were looking for?'
                     } else {
-                        x.innerText = `Tried to access "${ez.mylink()}" but realized that page doesn't exist (404)`
+                        x.innerText = `Requested (LINK: "${window.location.href}"), received (404PAGE)`
                     }
                 </script>
                 <p id="errortxt"><noscript>You might want to enable Javascript, It's hella useful for this page</noscript></p>

@@ -1,4 +1,7 @@
 class EZ {
+    constructor() {
+        console.log("EZ instance!")
+    }
     element(id) {
         return document.getElementById(id)
     }
@@ -6,5 +9,5 @@ class EZ {
         return `${window.location.host}${window.location.pathname}${window.location.search}`
     }
 }
-const ez = EZ
+const ez = new EZ()
 export default {ez}

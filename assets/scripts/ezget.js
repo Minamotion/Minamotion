@@ -9,5 +9,5 @@ class EZ {
         return `${window.location.host}${window.location.pathname}${window.location.search}`
     }
 }
-const ez = new EZ()
-export default {ez}
+let ez = new EZ()
+export default ez

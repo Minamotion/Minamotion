@@ -1,4 +1,4 @@
-import { ez } from "https://minamotion.github.io/assets/scripts/ezget.js"
+import ez from "https://minamotion.github.io/assets/scripts/ezget.js"
 document.addEventListener("DOMContentLoaded",async ()=>{
     let socialMediaLinks = []
     await fetch("assets/data/social-media-links.json").then((response)=>{

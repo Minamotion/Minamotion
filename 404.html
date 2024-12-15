@@ -27,12 +27,11 @@
 				</div>
       		</div>
       		<div id="contents" class="center-child">
-                <img src="https://minamotion.github.io/Minamotion/assets/images/unknown.png" />
+                <img src="https://minamotion.github.io/Minamotion/assets/images/unknown.png" style="margin:auto;"/>
                 <h1>Oops! Error!</h1>
                 <script type="module">
-                    import { ez } from "assets/scripts/ezget.js";
-                    const x = ez.element("errortxt")
-                    if (window.location.pathname.split("/")[0].includes("404")) {
+                    const x = document.getElementById("errortxt")
+                    if (["/404.html","/404"].includes(window.location.pathname)) {
                         x.innerText = 'Requested (404PAGE), is this what you were looking for?'
                     } else {
                         x.innerText = `Requested (LINK: "${window.location.href}"), received (404PAGE)`

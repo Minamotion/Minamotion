@@ -31,7 +31,7 @@ input[type=search], input[type=text], input[type=search], textarea, input[type=u
 }
 
 input[type=search]:hover, input[type=text]:hover, input[type=search]:hover, textarea:hover, input[type=url]:hover {
-    cursor: url('https://minamotion.github.io/Minamotion/assets/images/cursor/hand.png'), pointer, 6 5;
+    cursor: url('/assets/images/cursor/hand.png'), pointer, 6 5;
 }
 
 input::placeholder {
@@ -39,12 +39,12 @@ input::placeholder {
 }
 
 .button:enabled:hover {
-    cursor: url('https://minamotion.github.io/Minamotion/assets/images/cursor/hand.png'), pointer, 6 5;
+    cursor: url('/assets/images/cursor/hand.png'), pointer, 6 5;
 }
 
 .button:hover {
     background: #c3c3c3;
-    cursor: url('https://minamotion.github.io/Minamotion/assets/images/cursor/hand.png'), pointer, 6 5;
+    cursor: url('/assets/images/cursor/hand.png'), pointer, 6 5;
 }
 
 .button:disabled {
@@ -57,7 +57,7 @@ input::placeholder {
 .button:enabled:active {
     background: #000000;
     color: #7f7f7f;
-    cursor: url('https://minamotion.github.io/Minamotion/assets/images/cursor/hand.png'), pointer, 6 5;
+    cursor: url('/assets/images/cursor/hand.png'), pointer, 6 5;
 }
 
 .dialogTitle {

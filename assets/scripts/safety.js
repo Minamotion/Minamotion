@@ -1,6 +1,7 @@
 // I want users to have a secure connection so I made this script
 document.addEventListener("DOMContentLoaded",()=>{
-    if (window.location.protocol !== 'https:') {
+    const url = new URLSearchParams()
+    if ((window.location.protocol !== 'https:') && !(url.has("unsafe"))) {
         localStorage.clear()
         sessionStorage.clear()
         setTimeout(() => {

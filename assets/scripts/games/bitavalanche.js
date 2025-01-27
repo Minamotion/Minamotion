@@ -1,7 +1,7 @@
 import kaboom from "https://unpkg.com/kaboom/dist/kaboom.mjs"
 const DEBUG = true
 document.addEventListener("DOMContentLoaded", () => {
-	const k = kaboom({global:false, crisp:true})
+	const k = kaboom({background: [0, 0, 0], global:false, crisp:true})
     k.loadSprite("minamotion","https://minamotion.name/assets/images/minamotion.png")
 	const playerspeed = 250
 	const minSize = 110
@@ -251,6 +251,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		})
 		k.onCollide("player","danger",(player, danger)=>{
 			splash(player.pos,50)
+			k.shake()
 			player.destroy()
 			diescore = score
 			stopstuff = true
@@ -258,10 +259,10 @@ document.addEventListener("DOMContentLoaded", () => {
 		})
 		k.onDestroy("player",(player) => {
 			if (!settings.epilepsy) {
-				const funstuff = k.add([k.z(Infinity),k.rect(k.width(),k.height()),k.color([255,0,0]),k.opacity(0.5)])
-				funstuff.onUpdate(()=>{funstuff.opacity -= 0.005; if (funstuff.opacity <= 0) {funstuff.destroy()}})
+				const funstuff = k.add([k.z(Infinity),k.rect(k.width(),k.height()),k.color([255,0,0]),k.opacity(0.25)])
+				funstuff.onUpdate(()=>{funstuff.opacity -= 0.001; if (funstuff.opacity <= 0) {funstuff.destroy()}})
 			}
-			k.wait(2, ()=>{
+			k.wait(3, ()=>{
 				ulost(diescore)
 			})
 		})
@@ -311,7 +312,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		addTextButton(k.vec2(k.center().x+200,k.height()-(75*1)),"Settings",200,()=>{k.go("settings")})
 	})
 	k.scene("intro", ()=>{
-		const s = k.add([k.pos(k.center()),k.sprite("minamotion"),k.anchor("center"),k.color([63,72,204]),{disappear:false,appear:true},k.opacity(0),k.scale(1)])
+		const s = k.add([k.pos(k.center()),k.sprite("minamotion"),k.anchor("center"),k.opacity(0),k.scale(1),{disappear:false,appear:true}])
 		s.onUpdate(()=>{
 			if (s.appear && !s.disappear) {
 				s.opacity += 0.01

@@ -79,13 +79,16 @@ document.addEventListener("DOMContentLoaded", () => {
 			}
 		})
 		k.onDestroy("player", (player) => {
-			k.wait(2, ()=>{
+			const funstuff = k.add([k.z(Infinity),k.rect(k.width(),k.height()),k.color([255,0,0]),k.opacity(0.25)])
+			funstuff.onUpdate(()=>{funstuff.opacity -= 0.001; if (funstuff.opacity <= 0) {funstuff.destroy()}})
+			k.wait(3, ()=>{
 				ulost(score, reason)
 			})
 		})
 		k.onCollide("player", "danger", (player, danger) => {
 			reason = 1
 			splash(player.pos,50)
+			k.shake()
 			player.destroy()
 		})
 		k.onCollide("player", "addscore", (player, addscore) => {
@@ -126,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		addTextButton(k.vec2(k.center().x,k.height()-(75*1)),"Play",200,()=>{k.go("game")})
 	})
 	k.scene("intro", ()=>{
-		const s = k.add([k.pos(k.center()),k.sprite("minamotion"),k.anchor("center"),k.color([63,72,204]),{disappear:false,appear:true},k.opacity(0),k.scale(1)])
+		const s = k.add([k.pos(k.center()),k.sprite("minamotion"),k.anchor("center"),k.opacity(0),k.scale(1),{disappear:false,appear:true}])
 		s.onUpdate(()=>{
 			if (s.appear && !s.disappear) {
 				s.opacity += 0.01

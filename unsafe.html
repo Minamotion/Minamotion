@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>Page Title</title>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+    </head>
+    <body>
+        <script>
+            document.addEventListener("DOMContentLoaded", ()=>{
+                if (window.location.protocol !== 'https:') {
+                    document.getElementById("=^._.^=").addEventListener("click", ()=>{
+                        localStorage.clear()
+                        sessionStorage.clear()
+                        window.location.assign(`https://${window.location.host}${window.location.pathname}${window.location.search}`)
+                    })
+                }
+            })
+        </script>
+        <button id="=^._.^=">CLICK ME FOR NO REASON</button>
+    </body>
+</html>

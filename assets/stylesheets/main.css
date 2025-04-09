@@ -4,8 +4,16 @@
     --color-one-text: #3f48cc;
     --color-two: #3f48cc;
     --color-two-text: #ffffff;
-    --color-link: #00a2e8;
-    --color-link-hover: #7092be;
+    --color-link: #00e6ff;
+    --color-link-hover: #00a2e8;
+
+    --button-disabled-background: #ffffff;
+    --button-disabled-text: #880015;
+    --button-hover-background: #c3c3c3;
+    --button-background: #aaaaaa;
+    --button-text: #ffffff;
+    --button-pressed-background: #000000;
+    --button-pressed-text: #7f7f7f;
 }
 
 iframe {
@@ -59,14 +67,14 @@ page {
     animation-duration: 0.5s;
 }
 
-.hfButtons {
+.button-div {
     height: 100%;
     width: 50%;
     overflow: auto;
     display: table-row-group;
 }
 
-.hfButtons>button {
+.button-div>button {
     margin: 24;
 }
 
@@ -114,11 +122,76 @@ p {
     text-align: center;
 }
 
-.borderless {
+dialog::backdrop {
+    backdrop-filter: blur(.1in);
+}
+
+dialog {
+    text-align: center;
+    color: #ffffff;
+    background-color: #000000;
+    border-style: solid;
+    border-color: #3f48cc;
+    border-radius: 50px;
+    border-width: 10px;
+}
+
+input[type=search], input[type=text], input[type=search], textarea, input[type=url] {
+    background: white;
     border: none;
+    color: black;
+    font-family: "Bitcattoleman";
+}
+
+input::placeholder {
+    color: #0000004a
+}
+
+.button {
+    font-family: "Bitcattoleman";
+    margin: 12;
+    padding: 10 15 10 15;
+    color: var(--button-text);
+    background: var(--button-background);
+    border-style: none;
+    text-decoration-line: none;
+}
+
+.button:hover {
+    background: var(--button-hover-background);
+}
+
+.button:disabled, .button[style=disabled] {
+    background: var(--button-disabled-background);
+    color: var(--button-disabled-text);
+    animation-name: buttonDisabling;
+    animation-duration: 2s;
+}
+
+.button:enabled:active, .button:active:not([style=disabled]) {
+    background: var(--button-pressed-background);
+    color: var(--button-pressed-text);
+}
+
+.dialog-header {
+    width: 650;
+    height: 100;
+    text-align: center;
+    background-color: #ffffff;
+    color: #000000;
+    padding: 10px;
+    border-style: solid;
+    border-color: var(--color-two);
+    border-radius: 20px;
+    border-width: 10px;
 }
 
 /* Animations */
+@keyframes buttonDisabling {
+    from {background: var(--button-background); color: var(--button-text)}
+    to {background: var(--button-disabled-background); color: var(--button-disabled-text)}
+}
+
 @keyframes hyperlinkHover {
     from {color: var(--color-link);}
     to {color: var(--color-link-hover);}
@@ -143,74 +216,4 @@ p {
 @font-face {
     src: url("/assets/fonts/font-tpixel.ttf");
     font-family: "TPixel"
-}
-
-dialog::backdrop {
-    backdrop-filter: blur(.1in);
-}
-
-dialog {
-    text-align: center;
-    color: #ffffff;
-    background-color: #000000;
-    border-style: solid;
-    border-color: #3f48cc;
-    border-radius: 50px;
-    border-width: 10px;
-}
-
-.button {
-    font-family: "Bitcattoleman";
-    margin: 12;
-    padding: 10 15 10 15;
-    color: white;
-    background: #aaaaaa;
-    border-style: none;
-}
-
-input[type=search], input[type=text], input[type=search], textarea, input[type=url] {
-    background: white;
-    border: none;
-    color: black;
-    font-family: "Bitcattoleman";
-}
-
-input::placeholder {
-    color: #0000004a
-}
-
-.button:hover {
-    background: #c3c3c3;
-}
-
-.button:disabled {
-    background: #ffffff;
-    color: #880015;
-    animation-name: disable;
-    animation-duration: 2s;
-}
-
-.button:enabled:active {
-    background: #000000;
-    color: #7f7f7f;
-}
-
-.dialogTitle {
-    width: 650;
-    height: 100;
-    text-align: center;
-    background-color: #ffffff;
-    color: #000000;
-    padding: 10px;
-    border-style: solid;
-    border-color: #3f48cc;
-    border-radius: 20px;
-    border-width: 10px;
-}
-
-
-/* Animations */
-@keyframes disable {
-    from {background: #aaaaaa; color: white}
-    to {background: #eeeeee; color: black}
 }

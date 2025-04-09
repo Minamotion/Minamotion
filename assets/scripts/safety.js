@@ -1,4 +1,4 @@
-// I want users to have a secure connection so I made this script
+// I want users to use HTTPS so I made this script.
 document.addEventListener("DOMContentLoaded",()=>{
     const url = new URLSearchParams()
     if ((window.location.protocol !== 'https:') && !(url.has("unsafe"))) {

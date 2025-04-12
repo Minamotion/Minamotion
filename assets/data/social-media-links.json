@@ -28,5 +28,10 @@
         "link": "https://www.roblox.com/users/6091712285/profile",
         "icon": "roblox",
         "title": "Roblox"
+    },
+    {
+        "link": "https://www.twitch.tv/minamotiontv",
+        "icon": "twitch",
+        "title": "Twitch"
     }
 ]

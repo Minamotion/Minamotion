@@ -43,9 +43,11 @@ page {
     height: 100%;
     width: 100%;
     grid-template-rows:
-        auto /* Header */
-        1fr  /* Contents */
-        auto /* Footer */;
+        130px /* Header */
+        auto  /* Contents */
+        130px /* Footer */;
+    overflow: -moz-hidden-unscrollable;
+    overflow: hidden;
 }
 
 .footer {
@@ -59,14 +61,14 @@ page {
     overflow: auto;
 }
 
-*:any-link:not(.button) {
+*:any-link {
     color: var(--color-link);
     text-decoration: none;
     animation-name: hyperlinkNohover;
     animation-duration: 0.5s;
 }
 
-*:any-link:hover:not(.button) {
+*:any-link:hover {
     color: var(--color-link-hover);
     text-decoration: none;
     animation-name: hyperlinkHover;
@@ -149,7 +151,7 @@ input::placeholder {
     color: #0000004a
 }
 
-.button {
+button {
     font-family: "Bitcattoleman";
     margin: 12;
     padding: 10 15 10 15;
@@ -159,18 +161,18 @@ input::placeholder {
     text-decoration-line: none;
 }
 
-.button:hover {
+button:hover {
     background: var(--button-hover-background);
 }
 
-.button:disabled {
+button:disabled {
     background: var(--button-disabled-background);
     color: var(--button-disabled-text);
     animation-name: buttonDisabling;
     animation-duration: 2s;
 }
 
-.button:enabled:active {
+button:enabled:active {
     background: var(--button-pressed-background);
     color: var(--button-pressed-text);
 }

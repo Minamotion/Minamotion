@@ -4,8 +4,8 @@
     --color-one-text: #3f48cc;
     --color-two: #3f48cc;
     --color-two-text: #ffffff;
-    --color-link: #00e6ff;
-    --color-link-hover: #00a2e8;
+    --color-link: #00a2e8;
+    --color-link-hover: #00e6ff;;
 
     --button-disabled-background: #ffffff;
     --button-disabled-text: #505050;
@@ -21,9 +21,7 @@ iframe {
 }
 
 #contents {
-    height: -webkit-fill-available;
-    height: -moz-available;
-    height: fill-available;
+    height: 100%;
     overflow: auto;
 }
 

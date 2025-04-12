@@ -8,7 +8,7 @@
     --color-link-hover: #00a2e8;
 
     --button-disabled-background: #ffffff;
-    --button-disabled-text: #880015;
+    --button-disabled-text: #505050;
     --button-hover-background: #c3c3c3;
     --button-background: #aaaaaa;
     --button-text: #ffffff;
@@ -22,6 +22,8 @@ iframe {
 
 #contents {
     height: -webkit-fill-available;
+    height: -moz-available;
+    height: fill-available;
     overflow: auto;
 }
 
@@ -31,6 +33,8 @@ iframe {
     color: var(--color-one-text);
     padding: 10px;
     width: -webkit-fill-available;
+    width: -moz-available;
+    width: fill-available;
     overflow: auto;
 }
 
@@ -39,9 +43,9 @@ page {
     height: 100%;
     width: 100%;
     grid-template-rows:
-        130px /* Header */
-        auto  /* Contents */
-        130px /* Footer */;
+        auto /* Header */
+        1fr  /* Contents */
+        auto /* Footer */;
 }
 
 .footer {
@@ -50,6 +54,8 @@ page {
     color: var(--color-one-text);
     padding: 10px;
     width: -webkit-fill-available;
+    width: -moz-available;
+    width: fill-available;
     overflow: auto;
 }
 
@@ -91,10 +97,6 @@ page {
     border: var(--color-one) solid 10px;
     border-radius: 5px;
     background: black
-}
-
-html {
-    zoom: 80%;
 }
 
 img {
@@ -161,14 +163,14 @@ input::placeholder {
     background: var(--button-hover-background);
 }
 
-.button:disabled, .button[style=disabled] {
+.button:disabled {
     background: var(--button-disabled-background);
     color: var(--button-disabled-text);
     animation-name: buttonDisabling;
     animation-duration: 2s;
 }
 
-.button:enabled:active, .button:active:not([style=disabled]) {
+.button:enabled:active {
     background: var(--button-pressed-background);
     color: var(--button-pressed-text);
 }
